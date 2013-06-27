@@ -1,8 +1,7 @@
 jQuery('document').ready(function ($) {
-  // Populate value from local storage.
-  $('div.credits-value').html(localStorage['credits']);
-
-  // Update values.
+  // Populate values from local storage.
+  printValues();
+  // Update values when button is clicked.
   $('button.test').click(function () {
     getAeValue('http://juno.astroempires.com/account.aspx');
   })
@@ -30,7 +29,9 @@ function getAeValue(url) {
 function processAeValue(url, response) {
   if (url == 'http://juno.astroempires.com/account.aspx') {
     credits = /<a id='credits'.*?([0-9,]+).*?<\/a>/ig.exec(response);
+    income = /<td>[\s]*<b>Empire Income<\/b>[\s]*<\/td>[\s]*<td>([0-9,]+)/ig.exec(response);
     localStorage['credits'] = credits[1];
+    localStorage['income'] = income[1];
   }
   // Update the local storage to the ui.
   printValues();
@@ -38,4 +39,5 @@ function processAeValue(url, response) {
 
 function printValues() {
   jQuery('div.credits-value').html(localStorage['credits']);
+  jQuery('div.income-value').html(localStorage['income'] + ' per hour');
 }

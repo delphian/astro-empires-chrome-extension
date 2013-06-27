@@ -1,5 +1,34 @@
 body {
   font-family: 'arial narrow';
   font-size: 12px;
+  color: #ffffff;
+  background-color: #000000;
+  background-image: url('http://cdn.astroempires.com/skins/BlueNova_v3.2.4/images/background_normal.jpg');
+}
+
+/** Stylized arrow box. **/
+div.sbox_lft {
+  display: table-cell;
+  empty-cells: show;
+  width: 24px;
+  height: 30px;
+  background-image: url('http://cdn.astroempires.com/skins/BlueNova_v3.2.4/images/box6_title_left.png');
+}
+div.sbox_ctr {
+  display: table-cell;
+  empty-cells: show;
+  font-family: verdana, arial;
+  font-size: 11px;
+  font-weight: bold;
+  padding: 8px 10px 0px 10px;
+  background: url('http://cdn.astroempires.com/skins/BlueNova_v3.2.4/images/box6_title_center.png') top repeat-x;
+  height: 30px;
+}
+div.sbox_rht {
+  display: table-cell;
+  empty-cells: show;
+  width: 24px;
+  height: 30px;
+  background-image: url('http://cdn.astroempires.com/skins/BlueNova_v3.2.4/images/box6_title_right.png');
 }
 

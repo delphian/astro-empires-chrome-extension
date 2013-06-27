@@ -1,4 +1,2 @@
-astro-empires
-=============
-
-Astro Empires Chrome extension.
+Astro Empires Chrome Extension
+===================

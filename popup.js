@@ -63,6 +63,10 @@ function processAeValue(response) {
   if ((technology = /<td>[\s]*<b>Technology<\/b>[\s]*<\/td>[\s]*<td>([0-9,]+)/ig.exec(response)) && (technology.length > 0)) {
     localStorage['technology'] = technology[1];
   }
+  if ((level = /<td>[\s]*<b>Level<\/b>[\s]*<\/td>[\s]*<td>([0-9\.]+)[^(]+\([^0-9]+([0-9]+)\)/ig.exec(response)) && (level.length > 0)) {
+    localStorage['level'] = level[1];
+    localStorage['rank'] = level[2];
+  }
   // Update the local storage to the ui.
   printValues();
 }
@@ -72,4 +76,6 @@ function printValues() {
   jQuery('div.income-value').html(localStorage['income'] + ' per hour');
   jQuery('div.fleetsize-value').html(localStorage['fleetSize']);
   jQuery('div.technology-value').html(localStorage['technology']);
+  jQuery('div.level-value').html(localStorage['level']);
+  jQuery('div.rank-value').html(localStorage['rank']);  
 }

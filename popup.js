@@ -1,5 +1,5 @@
 
-var astroEmpires = new AEObject(localStorage['server'], localStorage['name'], localStorage['password']);
+var astroEmpires = new AEObject(localStorage['server'], localStorage['email'], localStorage['password']);
 
 jQuery('document').ready(function ($) {
     // Populate values from local storage.

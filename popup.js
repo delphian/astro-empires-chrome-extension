@@ -6,9 +6,7 @@ function get_credits(data, messageType, observed, response) {
         return credits[1];
     }
 }
-astroEmpires.msg.subscribe('get_credits', get_credits);
-
-
+astroEmpires.subscribe('get_credits', get_credits);
 
 jQuery('document').ready(function ($) {
     // Populate values from local storage.
@@ -18,8 +16,8 @@ jQuery('document').ready(function ($) {
         astroEmpires.aeGetData();
         // @todo This is always going to be 1 click behind.
         printValues(astroEmpires);
-    })
-})
+    });
+});
 
 function printValues(ae) {
     jQuery('div.credits-value').html(ae.aeStats.credits);
@@ -27,5 +25,5 @@ function printValues(ae) {
     jQuery('div.fleetsize-value').html(ae.aeStats.fleetSize);
     jQuery('div.technology-value').html(ae.aeStats.technology);
     jQuery('div.level-value').html(ae.aeStats.level);
-    jQuery('div.rank-value').html(ae.aeStats.rank);  
+    jQuery('div.rank-value').html(ae.aeStats.rank);
 }

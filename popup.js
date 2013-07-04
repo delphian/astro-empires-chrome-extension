@@ -1,13 +1,6 @@
 
 var ae = new AstroEmpires.AE(localStorage['server'], localStorage['email'], localStorage['password']);
 
-function get_credits(data, messageType, observed, response) {
-    if ((credits = /<a id='credits'.*?([0-9,]+).*?<\/a>/ig.exec(data)) && (credits.length > 0)) {
-        return credits[1];
-    }
-}
-ae.subscribe('get_credits', get_credits);
-
 jQuery('document').ready(function ($) {
     // Populate values from local storage.
     printValues(ae);

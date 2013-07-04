@@ -3,13 +3,12 @@ var ae = new AstroEmpires.AE(localStorage['server'], localStorage['email'], loca
 
 jQuery('document').ready(function ($) {
     // Populate values from local storage.
-    printValues(ae);
-    // Update values when button is clicked.
-    $('button.test').click(function () {
+    ae.getData();
+    // Poll for updates.
+    setInterval(function () {
         ae.getData();
-        // @todo This is always going to be 1 click behind.
         printValues(ae);
-    });
+    }, 5000);
 });
 
 function printValues(ae) {
@@ -20,3 +19,14 @@ function printValues(ae) {
     jQuery('div.level-value').html(ae.stats.level);
     jQuery('div.rank-value').html(ae.stats.rank);
 }
+
+/**
+ * Updating the popup with what we are currently doing.
+ */
+function printStatus(data, messageType, ae) {
+    var d = new Date();
+    var n = d.getTime();
+    var status = jQuery('div.ae-status-container');
+    status.html(n + ' ' + data.url);
+}
+ae.subscribe('ajax', printStatus);

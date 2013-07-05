@@ -1,4 +1,14 @@
 
+// Setup initial values when popup is first opened.
+jQuery('document').ready(function($) {
+    var background = chrome.extension.getBackgroundPage();
+    var ae = background.ae;
+    // Fill in the most recent messages.
+    var message = jQuery('div.message-container div.content');
+    var msg = ae.msgGetLast();
+    message.prepend('<div>' + msg.playerName + '</div>' + msg.message);
+});
+
 function printValues(ae) {
     jQuery('div.credits-value').html(ae.stats.credits);
     jQuery('div.income-value').html(ae.stats.income + ' per hour');
@@ -14,7 +24,7 @@ function printValues(ae) {
 function printMessage(data, messageType, ae) {
     var message = jQuery('div.message-container div.content');
     chrome.browserAction.setTitle({title: data.message.message.replace(/<(?:.|\n)*?>/gm, '')});
-    message.html(data.message.message);
+    message.prepend('<div>' + data.message.playerName + '</div>' + data.message.message);
 }
 
 /**

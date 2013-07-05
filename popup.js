@@ -25,6 +25,7 @@ function printValues(ae) {
  */
 function printMessage(data, messageType, ae) {
     var message = jQuery('div.message-container div.content');
+    chrome.browserAction.setTitle({title: data.message.message.replace(/<(?:.|\n)*?>/gm, '')});
     message.html(data.message.message);
 }
 ae.subscribe('msg_add_pre', printMessage);

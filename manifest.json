@@ -7,7 +7,9 @@
 
   "permissions": [
     "https://*/",
-    "http://*/"
+    "http://*/",
+    "tabs",
+    "notifications"
   ],
 
   "options_page": "options/options.html",
@@ -16,7 +18,12 @@
     "default_icon": {
       "19": "images/icon.png"
     },
-    "default_popup": "popup.html",
-    "default_title": "Astro Empires"
+    "default_title": "Astro Empires",
+    "default_popup": "popup.html"
+  },
+
+  "background": {
+    "page": "background.html"
   }
+
 }

@@ -32,3 +32,6 @@ div.sbox_rht {
   background-image: url('http://cdn.astroempires.com/skins/BlueNova_v3.2.4/images/box6_title_right.png');
 }
 
+div.container {
+  clear: both;
+}

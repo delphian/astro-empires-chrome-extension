@@ -24,7 +24,7 @@ function printValues(ae) {
  * Update popup with new messages received.
  */
 function printMessage(data, messageType, ae) {
-    var message = jQuery('div.message-container');
+    var message = jQuery('div.message-container div.content');
     message.html(data.message.message);
 }
 ae.subscribe('msg_add_pre', printMessage);
@@ -35,7 +35,7 @@ ae.subscribe('msg_add_pre', printMessage);
 function printStatus(data, messageType, ae) {
     var d = new Date();
     var n = d.getTime();
-    var status = jQuery('div.ae-status-container');
-    status.html(n + ' ' + data.url);
+    var status = jQuery('div.ae-status-container div.content');
+    status.html(n);
 }
 ae.subscribe('ajax', printStatus);

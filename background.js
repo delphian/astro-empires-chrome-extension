@@ -40,7 +40,7 @@ function printMessage(data, messageType, ae) {
     if (popup = getPopup()) {
         popup.printMessage(data, messageType, ae);
     }
-    window.webkitNotifications.createNotification('icon.png', 'Astro Empires Message', data.message.message).show();
+    window.webkitNotifications.createNotification('images/icon.png', 'Guild Message', data.message.message).show();
 }
 ae.subscribe('msg_add_pre', printMessage);
 

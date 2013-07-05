@@ -21,6 +21,15 @@ function printValues(ae) {
 }
 
 /**
+ * Update popup with new messages received.
+ */
+function printMessage(data, messageType, ae) {
+    var message = jQuery('div.message-container');
+    message.html(data.message.message);
+}
+ae.subscribe('msg_add_pre', printMessage);
+
+/**
  * Updating the popup with what we are currently doing.
  */
 function printStatus(data, messageType, ae) {

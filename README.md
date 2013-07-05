@@ -8,3 +8,5 @@ Astro Empires Chrome extension. Automatically pulls down account statistics for 
  * `git clone --recursive https://github.com/delphian/astro-empires-chrome-extension.git`
  * `cd astro-empires-chrome-extension`
  * `./install.sh`
+
+Feel free to contact me bryan.hazelbaker@gmail.com with any questions.

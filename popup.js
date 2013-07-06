@@ -6,7 +6,10 @@ jQuery('document').ready(function($) {
     // Fill in the most recent messages.
     var message = jQuery('div.message-container div.content');
     var msg = ae.msgGetLast();
-    message.prepend('<div>' + msg.playerName + '</div>' + msg.message);
+    message.prepend(
+        '<div class="name">' + msg.playerName + '</div>' + 
+        '<div class="message">' + msg.message + '</div>'
+    );
 });
 
 function printValues(ae) {
@@ -24,7 +27,10 @@ function printValues(ae) {
 function printMessage(data, messageType, ae) {
     var message = jQuery('div.message-container div.content');
     chrome.browserAction.setTitle({title: data.message.message.replace(/<(?:.|\n)*?>/gm, '')});
-    message.prepend('<div>' + data.message.playerName + '</div>' + data.message.message);
+    message.prepend(
+        '<div class="name">' + data.message.playerName + '</div>' + 
+        '<div class="message">' + data.message.message + '</div>'
+    );
 }
 
 /**

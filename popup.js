@@ -1,4 +1,20 @@
 
+/**
+ * @file
+ * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
+ * @version 0.1
+ *
+ * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
+ * Released under the MIT license. Read the entire license located in the
+ * project root or at http://opensource.org/licenses/mit-license.php
+ *
+ * @brief Populate fields from background page information.
+ *
+ * @details Communicates with the background page ae object to use acquire
+ * data to be filled into the popup's DOM structure. Mainly concerned with
+ * the display of information to the viewer.
+ */
+
 // Setup initial values when popup is first opened.
 jQuery('document').ready(function($) {
     var background = chrome.extension.getBackgroundPage();

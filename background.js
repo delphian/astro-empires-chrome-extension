@@ -4,15 +4,14 @@
  * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  * @version 0.1
  *
+ * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
+ * Released under the MIT license. Read the entire license located in the
+ * project root or at http://opensource.org/licenses/mit-license.php
+ * 
  * @brief Instantiate the ae object and poll astro empires server for updates.
  *
  * @details Register callbacks on the ae object. These callbacks forward the
  * events to the popup.js which may display information based on the event.
- *
- * @copyright
- * Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
- * Released under the MIT license. Read the entire license located in the
- * project root or at http://opensource.org/licenses/mit-license.php
  */
 
 var ae = new AstroEmpires.AE(localStorage['server'], localStorage['email'], localStorage['password']);

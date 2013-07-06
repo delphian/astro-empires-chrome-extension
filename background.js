@@ -40,7 +40,7 @@ function printMessage(data, messageType, ae) {
     if (popup = getPopup()) {
         popup.printMessage(data, messageType, ae);
     }
-    var msg = jQuery(data.message.message).text()
+    var msg = data.message.message.replace(/<(?:.|\n)*?>/gm, '');
     window.webkitNotifications.createNotification('images/icon.png', 'Guild Message', msg).show();
 }
 ae.subscribe('msg_add_pre', printMessage);

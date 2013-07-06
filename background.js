@@ -36,12 +36,11 @@ function getPopup() {
 jQuery('document').ready(function ($) {
     // Populate values from local storage.
     ae.getData();
-    $('')
     // Poll for updates.
     setInterval(function () {
         ae.getData();
         printValues(ae);
-    }, 10000);
+    }, 30000);
 });
 
 function printValues(ae) {

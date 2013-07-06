@@ -1,17 +1,39 @@
 body {
   width: 400px;
 }
-
-div.statistic-container {
-  width: 50%;
-  float: left;
-}
-div.message-container {
-  clear: none;
-}
-
 div.label, div.value {
   height: 1em;
   width: 50%;
   float: left;
+  margin-bottom: 1px;
 }
+
+/* Stats. */
+div.statistic-container {
+  width: 40%;
+  float: left;
+}
+
+/* Guild messages. */
+div.message-container {
+  width: 60%;
+  float: left;
+  clear: none;
+}
+div.message-container div.content {
+  height: 8em;
+  overflow: scroll;
+}
+div.message-container div.content div.name {
+  height: 1em;
+  border-bottom: 1px dotted #333333;
+}
+div.message-container div.content div.message {
+  display: none;
+  margin-left: 1em;
+}
+div.message-container div.content div.message font {
+  font-size: inherit;
+  font-family: inherit;
+}
+

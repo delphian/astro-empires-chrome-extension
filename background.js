@@ -16,6 +16,7 @@ function getPopup() {
     return popup;
 }
 
+// Fetch information every 10 seconds.
 jQuery('document').ready(function ($) {
     // Populate values from local storage.
     ae.getData();
@@ -34,12 +35,9 @@ function printValues(ae) {
 }
 
 /**
- * Update popup with new messages received.
+ * Send OS a notification when we received new guild messages.
  */
 function printMessage(data, messageType, ae) {
-    if (popup = getPopup()) {
-        popup.printMessage(data, messageType, ae);
-    }
     var msg = data.message.message.replace(/<(?:.|\n)*?>/gm, '');
     window.webkitNotifications.createNotification('images/icon.png', 'Guild Message', msg).show();
 }

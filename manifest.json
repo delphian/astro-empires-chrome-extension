@@ -5,6 +5,8 @@
   "description": "Keep up to date with the most recent guild messages and review your account statistics.",
   "version": "0.8",
 
+  "homepage_url": "https://github.com/delphian/astro-empires-chrome-extension/wiki",
+
   "permissions": [
     "https://*.astroempires.com/",
     "http://*.astroempires.com/",
@@ -16,12 +18,18 @@
   "browser_action": {
     "default_icon": {
       "19": "images/ae-icon-19.png",
-      "38": "images/ae-icon-38.png",
-      "48": "images/ae-icon-48.png",
-      "128": "images/ae-icon-128.png"
+      "38": "images/ae-icon-38.png"
     },
     "default_title": "Astro Empires Observer",
     "default_popup": "popup.html"
+  },
+
+  "icons": { 
+    "16": "images/ae-icon-16.png",
+    "19": "images/ae-icon-19.png",
+    "38": "images/ae-icon-38.png",
+    "48": "images/ae-icon-48.png",
+    "128": "images/ae-icon-128.png"
   },
 
   "background": {

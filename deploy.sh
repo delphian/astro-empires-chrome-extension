@@ -17,4 +17,5 @@ if [ "$INPUT" == 'y' ]; then
   rm "/tmp/$N/deploy.sh"
   rm "/tmp/$N/install.sh"
   tar -zcvf astro-empires-observer.tar.gz "/tmp/$N"
+  rm -Rf "/tmp/$N"
 fi

@@ -16,6 +16,6 @@ if [ "$INPUT" == 'y' ]; then
   # Remove other files.
   rm "/tmp/$N/deploy.sh"
   rm "/tmp/$N/install.sh"
-  tar -zcvf astro-empires-observer.tar.gz "/tmp/$N"
+  zip -r astro-empires-observer "/tmp/$N"
   rm -Rf "/tmp/$N"
 fi

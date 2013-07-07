@@ -19,6 +19,11 @@
 jQuery('document').ready(function($) {
     var background = chrome.extension.getBackgroundPage();
     var AstroEmpires = background.AstroEmpires;
+    if (!localStorage['email']) {
+        var body = jQuery('body');
+        body.html('<p>Please configure first under chrome settings, extensions</p>');
+        return;
+    }
     var ae = background.ae;
     // Get statistics.
     printValues(ae);
@@ -45,6 +50,11 @@ jQuery('document').ready(function($) {
     }
 });
 
+/**
+ * Update the statistics.
+ *
+ * This is called directly from the background page.
+ */
 function printValues(ae) {
     jQuery('div.credits-value').html(ae.stats.credits);
     jQuery('div.income-value').html(ae.stats.income + ' per hour');
@@ -56,6 +66,8 @@ function printValues(ae) {
 
 /**
  * Updating the popup with what we are currently doing.
+ *
+ * This is called directly from the background page.
  */
 function printStatus(data, messageType, ae) {
     var d = new Date();

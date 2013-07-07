@@ -2,7 +2,7 @@
 /**
  * @file
  * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
- * @version 0.1
+ * @version 0.8.1
  *
  * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  * Released under the MIT license. Read the entire license located in the
@@ -13,6 +13,11 @@
  * @details Register callbacks on the ae object. These callbacks forward the
  * events to the popup.js which may display information based on the event.
  */
+
+// Dont let the script run if the login information has not been provided.
+if (!localStorage['server'] || !localStorage['email'] || !localStorage['password']) {
+    throw "Extension not configured yet!";
+}
 
 var ae = new AstroEmpires.AE(localStorage['server'], localStorage['email'], localStorage['password']);
 

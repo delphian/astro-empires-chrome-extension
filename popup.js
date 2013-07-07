@@ -2,7 +2,7 @@
 /**
  * @file
  * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
- * @version 0.1
+ * @version 0.8.1
  *
  * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  * Released under the MIT license. Read the entire license located in the
@@ -19,9 +19,9 @@
 jQuery('document').ready(function($) {
     var background = chrome.extension.getBackgroundPage();
     var AstroEmpires = background.AstroEmpires;
-    if (!localStorage['email']) {
+    if (!localStorage['server'] || !localStorage['email'] || !localStorage['password']) {
         var body = jQuery('body');
-        body.html('<p>Please configure first under chrome settings, extensions</p>');
+        body.html('<p>Please configure first under chrome settings, extensions</p><p>After saving configuration it may take up to 60 seconds for data to display.</p>');
         return;
     }
     var ae = background.ae;

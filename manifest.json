@@ -1,14 +1,13 @@
 {
   "manifest_version": 2,
 
-  "name": "Astro Empires",
-  "description": "Astro Empires.",
-  "version": "1.0",
+  "name": "Astro Empires Observer",
+  "description": "Keep up to date with the most recent guild messages and review your account statistics.",
+  "version": "0.8",
 
   "permissions": [
-    "https://*/",
-    "http://*/",
-    "tabs",
+    "https://*.astroempires.com/",
+    "http://*.astroempires.com/",
     "notifications"
   ],
 
@@ -16,9 +15,12 @@
 
   "browser_action": {
     "default_icon": {
-      "19": "images/icon.png"
+      "19": "images/ae-icon-19.png",
+      "38": "images/ae-icon-38.png",
+      "48": "images/ae-icon-48.png",
+      "128": "images/ae-icon-128.png"
     },
-    "default_title": "Astro Empires",
+    "default_title": "Astro Empires Observer",
     "default_popup": "popup.html"
   },
 

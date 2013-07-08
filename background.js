@@ -2,7 +2,7 @@
 /**
  * @file
  * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
- * @version 0.8.1
+ * @version 0.8.3
  *
  * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  * Released under the MIT license. Read the entire license located in the
@@ -57,8 +57,14 @@ function printValues(ae) {
  * Send OS a notification when we received new guild messages.
  */
 function printMessage(data, messageType, ae) {
-    var msg = data.message.message.replace(/<(?:.|\n)*?>/gm, '');
-    window.webkitNotifications.createNotification('images/icon.png', 'Guild Message', msg).show();
+    var msg = data.message.message;
+    // Remove any blockquotes.
+    msg = msg.replace(/<blockquote>.*<\/blockquote>/gi, '');
+    // Remove all html codes.
+    msg = msg.replace(/<(?:.|\n)*?>/gm, '');
+    // Convert special characters.
+    msg = msg.replace(/&#39;/, '\'');
+    window.webkitNotifications.createNotification('images/ae-icon-48.png', 'Guild: ' + data.message.playerName, msg).show();
 }
 ae.subscribe('msg_add_pre', printMessage);
 

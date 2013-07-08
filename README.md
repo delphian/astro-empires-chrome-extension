@@ -1,6 +1,8 @@
 Astro Empires Chrome Extension
 ===================
 
+PLease see this original document at https://github.com/delphian/astro-empires-chrome-extension/wiki
+
 Astro Empires Chrome extension. Automatically pulls down account statistics for constant viewing.
 
 ### License ###

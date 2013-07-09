@@ -29,7 +29,7 @@ jQuery('document').ready(function($) {
     printValues(ae);
     // Fill in the most recent messages.
     var message = jQuery('div.message-container div.content');
-    var msg = ae.msgGetPrev();
+    var msg = ae.msgs.guild.getLast();
     for(i = 0; i < 6; i++) {
         var date = new Date(msg.time * 1000).toLocaleDateString();
         var time = new Date(msg.time * 1000).toLocaleTimeString();
@@ -46,7 +46,7 @@ jQuery('document').ready(function($) {
                 $('div.message.msg-' + id).fadeOut();        
             }
         });
-        msg = ae.msgGetPrev(msg.id);
+        ae.msgs.guild.getPrev();
     }
 });
 

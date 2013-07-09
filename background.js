@@ -66,7 +66,7 @@ function printMessage(data, messageType, ae) {
     msg = msg.replace(/&#39;/, '\'');
     window.webkitNotifications.createNotification('images/ae-icon-48.png', 'Guild: ' + data.message.playerName, msg).show();
 }
-ae.subscribe('msg_add_pre', printMessage);
+ae.msgs.guild.subscribe('msg_add_pre', printMessage);
 
 /**
  * Updating the popup with what we are currently doing.

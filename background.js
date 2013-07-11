@@ -59,7 +59,7 @@ function printValues(ae) {
 function printMessage(data, messageType, ae) {
     var msg = data.message.message;
     // Only display the notification if the message is unread.
-    if (msg.read == 'unread') {
+    if (data.message.read == 'unread') {
         // Remove any blockquotes.
         msg = msg.replace(/<blockquote>.*<\/blockquote>/gi, '');
         // Remove all html codes.
@@ -70,6 +70,24 @@ function printMessage(data, messageType, ae) {
     }
 }
 ae.msgs.guild.subscribe('msg_add_pre', printMessage);
+
+/**
+ * Send OS a notification when we received new guild messages.
+ */
+function printMailMessage(data, messageType, ae) {
+    var msg = data.message.message;
+    // Only display the notification if the message is unread.
+    if (data.message.read == 'unread') {
+        // Remove any blockquotes.
+        msg = msg.replace(/<blockquote>.*<\/blockquote>/gi, '');
+        // Remove all html codes.
+        msg = msg.replace(/<(?:.|\n)*?>/gm, '');
+        // Convert special characters.
+        msg = msg.replace(/&#39;/, '\'');
+        window.webkitNotifications.createNotification('images/ae-icon-48.png', 'Mail: ' + data.message.playerName, msg).show();
+    }
+}
+ae.msgs.mail.subscribe('msg_add_pre', printMailMessage);
 
 /**
  * Updating the popup with what we are currently doing.

@@ -29,7 +29,7 @@ function contentMessage(data, sender, sendResponse) {
         if (data.planet.player) {
             msg = msg + ' owned by ' + data.planet.player;
         }
-        console.log(msg);
+        //console.log(msg);
     }
     sendResponse();
 }

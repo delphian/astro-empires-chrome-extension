@@ -2,7 +2,7 @@
 /**
  * @file
  * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
- * @version 0.8.5
+ * @version 0.8.6
  *
  * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  * Released under the MIT license. Read the entire license located in the

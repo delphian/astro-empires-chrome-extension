@@ -29,7 +29,9 @@ function contentMessage(data, sender, sendResponse) {
         if (data.planet.player) {
             msg = msg + ' owned by ' + data.planet.player;
         }
-        //console.log(msg);
+    }
+    if (data.type == 'player' && data.action == 'set') {
+        console.log(data);
     }
     sendResponse();
 }
@@ -69,7 +71,7 @@ function printValues(ae) {
 }
 
 /**
- * Save all data to local storage.
+ * Save all data in ae object to local storage.
  */
 function saveAE(ae) {
     for(index in ae.msgs) {
@@ -77,6 +79,7 @@ function saveAE(ae) {
     }
     localStorage['ae_user'] = JSON.stringify(ae.user);
     localStorage['ae_stats'] = JSON.stringify(ae.stats);
+    localStorage['ae_players'] = JSON.stringify(ae.players.players);
 }
 
 /**
@@ -94,6 +97,9 @@ function loadAE(ae) {
     }
     if (typeof(localStorage['ae_stats']) != 'undefined') {
         ae.stats = JSON.parse(localStorage['ae_stats']);
+    }
+    if (typeof(localStorage['ae_players']) != 'undefined') {
+        ae.players.players = JSON.parse(localStorage['ae_players']);
     }
 }
 

@@ -21,6 +21,19 @@ if (!localStorage['server'] || !localStorage['email'] || !localStorage['password
 
 var ae = new AstroEmpires.AE(localStorage['server'], localStorage['email'], localStorage['password']);
 
+chrome.extension.onRequest.addListener(contentMessage);
+
+function contentMessage(data, sender, sendResponse) {
+    if (data.type == 'planet' && data.action == 'set') {
+        var msg = data.planet.id + ' is a ' + data.planet.type;
+        if (data.planet.player) {
+            msg = msg + ' owned by ' + data.planet.player;
+        }
+        console.log(msg);
+    }
+    sendResponse();
+}
+
 /**
  * Return a reference to the popup window object.
  *

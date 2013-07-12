@@ -24,14 +24,8 @@ var ae = new AstroEmpires.AE(localStorage['server'], localStorage['email'], loca
 chrome.extension.onRequest.addListener(contentMessage);
 
 function contentMessage(data, sender, sendResponse) {
-    if (data.type == 'planet' && data.action == 'set') {
-        var msg = data.planet.id + ' is a ' + data.planet.type;
-        if (data.planet.player) {
-            msg = msg + ' owned by ' + data.planet.player;
-        }
-    }
-    if (data.type == 'player' && data.action == 'set') {
-        console.log(data);
+    if (data.type == 'process_html') {
+        ae.processData(data.data.url, data.data.html);
     }
     sendResponse();
 }
@@ -61,7 +55,7 @@ jQuery('document').ready(function ($) {
         ae.getData();
         saveAE(ae);
         printValues(ae);
-    }, 30000);
+    }, 5 * 60000);
 });
 
 function printValues(ae) {

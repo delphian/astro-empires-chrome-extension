@@ -42,8 +42,7 @@
       "js": [
         "libraries/external/jquery/jquery-1.8.3.min.js",
         "libraries/ae-js-lib/astro-empires.js",
-        "content/player.js",
-        "content/location.js"
+        "content/watcher.js"
       ]
     }
   ]

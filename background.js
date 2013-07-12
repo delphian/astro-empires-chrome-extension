@@ -39,10 +39,12 @@ function getPopup() {
 // Fetch information every 10 seconds.
 jQuery('document').ready(function ($) {
     // Populate values from local storage.
+    loadAE(ae);
     ae.getData();
     // Poll for updates.
     setInterval(function () {
         ae.getData();
+        saveAE(ae);
         printValues(ae);
     }, 30000);
 });
@@ -50,6 +52,35 @@ jQuery('document').ready(function ($) {
 function printValues(ae) {
     if (popup = getPopup()) {
         popup.printValues(ae);
+    }
+}
+
+/**
+ * Save all data to local storage.
+ */
+function saveAE(ae) {
+    for(index in ae.msgs) {
+        localStorage['ae_msgs_' + index] = JSON.stringify(ae.msgs[index].messages);
+    }
+    localStorage['ae_user'] = JSON.stringify(ae.user);
+    localStorage['ae_stats'] = JSON.stringify(ae.stats);
+}
+
+/**
+ * Load local storage data into AE object.
+ */
+function loadAE(ae) {
+    for(index in ae.msgs) {
+        if (typeof(localStorage['ae_msgs_' + index]) != 'undefined') {
+            ae.msgs[index].messages = JSON.parse(localStorage['ae_msgs_' + index]);
+            ae.msgs[index].getLast();
+        }
+    }
+    if (typeof(localStorage['ae_user']) != 'undefined') {
+        ae.user = JSON.parse(localStorage['ae_user']);
+    }
+    if (typeof(localStorage['ae_stats']) != 'undefined') {
+        ae.stats = JSON.parse(localStorage['ae_stats']);
     }
 }
 

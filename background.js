@@ -1,7 +1,7 @@
 
 /**
  * @file
- * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
+ * @author Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  * @version 0.8.6
  *
  * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>

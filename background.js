@@ -45,14 +45,18 @@ function getPopup() {
     return popup;
 }
 
-// Fetch information every 10 seconds.
+// Fetch information every 5 to 8 minutes.
 jQuery('document').ready(function ($) {
     // Populate values from local storage.
     loadAE(ae);
     ae.getData();
     // Poll for updates.
     setInterval(function () {
-        ae.getData();
+        // From containing interval, waiting another 1 to 180 seconds before
+        // polling AE. Actual poll is now between 5 and 8 minutes.
+        setTimeout(function() {
+            ae.getData();
+        }, Math.floor((Math.random()*180)+1) * 1000);
         saveAE(ae);
         printValues(ae);
     }, 5 * 60000);

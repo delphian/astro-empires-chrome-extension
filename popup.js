@@ -1,8 +1,7 @@
 
 /**
- * @file
- * @author  Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
- * @version 0.8.1
+ * @file popup.js
+ * @author Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  *
  * @copyright Copyright (c) 2013 Bryan Hazelbaker <bryan.hazelbaker@gmail.com>
  * Released under the MIT license. Read the entire license located in the
@@ -24,36 +23,17 @@ jQuery('document').ready(function($) {
         body.html('<p>Please configure first under chrome settings, extensions</p><p>After saving configuration it may take up to 60 seconds for data to display.</p>');
         return;
     }
-    var ae = background.ae;
+    // No need to alter the message pointers in the ae object, make a copy
+    // instead.
+    var ae = jQuery.extend(true, {}, background.ae);
     // Get statistics.
     printValues(ae);
     // Fill in the most recent messages.
-    var message = jQuery('div.message-container div.content');
-    var msg = ae.msgs.guild.getLast();
-    for(i = 0; i < 6; i++) {
-        var date = new Date(msg.time * 1000).toLocaleDateString();
-        var time = new Date(msg.time * 1000).toLocaleTimeString();
-        message.append(
-            '<div class="name msg-' + msg.id + '">' + date + ' ' + time + ' ' + msg.playerName + '</div>' + 
-            '<div class="message msg-' + msg.id + '">' + msg.message + '</div>'
-        );
-        $('div.name.msg-' + msg.id).click(function () {
-            var id = AstroEmpires.regex(/msg-([0-9]+)/i, $(this).attr('class'), 1, false);
-            if ($('div.message.msg-' + id).css('display') == 'none') {
-                $('div.message.msg-' + id).fadeIn();
-            }
-            else {
-                $('div.message.msg-' + id).fadeOut();        
-            }
-        });
-        ae.msgs.guild.getPrev();
-    }
+    printGuildMessages(ae);
 });
 
 /**
  * Update the statistics.
- *
- * This is called directly from the background page.
  */
 function printValues(ae) {
     jQuery('div.credits-value').html(ae.stats.credits);
@@ -62,6 +42,35 @@ function printValues(ae) {
     jQuery('div.technology-value').html(ae.stats.technology);
     jQuery('div.level-value').html(ae.stats.level);
     jQuery('div.rank-value').html(ae.stats.rank);
+}
+
+/**
+ * Update the guild messages.
+ */
+function printGuildMessages(ae) {
+    // Fill in the most recent messages.
+    var message = jQuery('div.message-container div.content');
+    var msg = ae.msgs.guild.getLast();
+    for(i = 0; i < 6; i++) {
+        var moment = new Date(msg.time * 1000);
+        var date = moment.getMonth() + '/' + moment.getDay();
+        var time = moment.getHours() + ':' + moment.getMinutes();
+        message.append(
+            '<div class="name msg-' + msg.id + '">' + date + ' ' + time + ' ' + msg.playerName + '</div>' + 
+            '<div class="message msg-' + msg.id + '">' + msg.message + '</div>'
+        );
+        $('div.name.msg-' + msg.id).click(function () {
+            //var id = AstroEmpires.regex(/msg-([0-9]+)/i, $(this).attr('class'), 1, false);
+            var msg_body = $(this).next();
+            if ($(msg_body).css('display') == 'none') {
+                $(msg_body).fadeIn();
+            }
+            else {
+                $(msg_body).fadeOut();        
+            }
+        });
+        ae.msgs.guild.getPrev();
+    }
 }
 
 /**

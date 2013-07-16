@@ -60,7 +60,6 @@ function printGuildMessages(ae) {
             '<div class="message msg-' + msg.id + '">' + msg.message + '</div>'
         );
         $('div.name.msg-' + msg.id).click(function () {
-            //var id = AstroEmpires.regex(/msg-([0-9]+)/i, $(this).attr('class'), 1, false);
             var msg_body = $(this).next();
             if ($(msg_body).css('display') == 'none') {
                 $(msg_body).fadeIn();

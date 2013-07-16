@@ -1,14 +1,39 @@
 div.aece-player-extra-info {
-	z-index: 99;
-	background-color: #000000;
-	margin: auto;
-	margin-top: 10px;
-	position: absolute;
-	display: none;
-	border: 1px solid #333333;
+    opacity: 0.4;
+    z-index: 99;
+    background-color: #000000;
+    margin: auto;
+    margin-top: 10px;
+    position: absolute;
+    display: none;
+    border: 1px solid #333333;
 
 }
+div.aece-player-extra-info table td {
+    padding-left: 2px;
+    padding-right: 2px;
+}
 div.aece-player-extra-info table td:first-child {
-	text-transform: capitalize;
-	padding-right: 5px;
+    text-transform: capitalize;
+    padding-right: 5px;
+}
+
+/* Bottom status bar. */
+div.aece-content-bar {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 20em;
+    border-right: 1px solid #333333;
+    opacity: 0.6;
+    background-color: #000000;
+}
+div.aece-content-body {
+    overflow: auto;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 20em;
 }

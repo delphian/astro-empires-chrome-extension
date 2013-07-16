@@ -31,7 +31,7 @@ jQuery('document').ready(function ($) {
                         $(this).next().fadeIn(100);
                     }
                     else {
-                        $(this).next().fadeOut(1000);
+                        $(this).next().fadeOut(500);
                     }
                 });
             }

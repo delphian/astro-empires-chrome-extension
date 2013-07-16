@@ -1,0 +1,14 @@
+div.aece-player-extra-info {
+	z-index: 99;
+	background-color: #000000;
+	margin: auto;
+	margin-top: 10px;
+	position: absolute;
+	display: none;
+	border: 1px solid #333333;
+
+}
+div.aece-player-extra-info table td:first-child {
+	text-transform: capitalize;
+	padding-right: 5px;
+}

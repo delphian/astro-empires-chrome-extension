@@ -21,14 +21,19 @@ if (!localStorage['server'] || !localStorage['email'] || !localStorage['password
 
 var ae = new AstroEmpires.AE(localStorage['server'], localStorage['email'], localStorage['password']);
 
-chrome.extension.onRequest.addListener(contentMessage);
-
-function contentMessage(data, sender, sendResponse) {
-    if (data.type == 'process_html') {
-        ae.processData(data.data.url, data.data.html);
+/**
+ * Listen for messages from content scripts.
+ */
+chrome.extension.onRequest.addListener(function(msg, sender, sendResponse) {
+    var response = null;
+    if (msg.type == 'process_html') {
+        ae.processData(msg.data.url, msg.data.html);
     }
-    sendResponse();
-}
+    if (msg.type == 'get_player') {
+        response = ae.players.players[msg.id];
+    }
+    sendResponse(response);
+});
 
 /**
  * Return a reference to the popup window object.

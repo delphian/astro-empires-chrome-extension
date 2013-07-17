@@ -12,8 +12,11 @@
 // Add player widgets to the status bar.
 AstroEmpiresCE.StatusBar.subscribe('bar_info', function(data, messageType, sb) {
     data.inlinePlayer = {};
-    data.inlinePlayer.html = '<div>' + 
-    '  <div>Player</div>' +
+    data.inlinePlayer.html = '<div class="widget widget-player-stats">' + 
+    '  <div class="title">Player</div>' +
+    '  <table><tbody>' +
+    '    <tr><td class="name name-name">Name</td><td class="value name-value"></td></tr>' +
+    '  </tbody></table>' +
     '</div>';
 });
 
@@ -28,19 +31,8 @@ jQuery('document').ready(function ($) {
         };
         chrome.extension.sendRequest(msg, function(player) {
             if (player) {
-                var html = '<div class="aece-player-extra-info"><table>';
-                for(index in player) {
-                    html = html + '<tr><td>' + index + '</td><td>' + player[index] + '</td></tr>';
-                }
-                html = html + '</table></div>';
-                $(selector).after(html);
                 $(selector).hover(function() {
-                    if ($(this).next().css('display') == 'none') {
-                        $(this).next().fadeIn(100);
-                    }
-                    else {
-                        $(this).next().fadeOut(500);
-                    }
+                    $('div.widget-player-stats td.name-name').html(player.name);
                 });
             }
         });

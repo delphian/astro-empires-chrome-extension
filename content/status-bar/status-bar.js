@@ -62,10 +62,11 @@ AstroEmpiresCE.StatusBar = function(oldBody, ae) {
  * Declare a new singleton of Observable. Declare static methods that simply
  * forward to the AstroEmpiresCE.StatusBar singleton observable object.
  */
+// Notice we do not use .prototype
 AstroEmpiresCE.StatusBar.ODP = new Observable();
 AstroEmpiresCE.StatusBar.subscribe = function(messageType, callback) { AstroEmpiresCE.StatusBar.ODP.subscribe(messageType, callback); };
-AstroEmpiresCE.StatusBar.unsubscribe = function(messageType, callback) { AstroEmpiresCE.StatusBar.ODP.subscribe(messageType, callback); };
-AstroEmpiresCE.StatusBar.publish = function(data, messageType, observed) { AstroEmpiresCE.StatusBar.ODP.subscribe(data, messageType, observed); };
+AstroEmpiresCE.StatusBar.unsubscribe = function(messageType, callback) { AstroEmpiresCE.StatusBar.ODP.unsubscribe(messageType, callback); };
+AstroEmpiresCE.StatusBar.publish = function(data, messageType, observed) { AstroEmpiresCE.StatusBar.ODP.publish(data, messageType, observed); };
 /**
  * Make the status bar instance observable.
  */

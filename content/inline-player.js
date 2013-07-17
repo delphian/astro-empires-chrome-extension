@@ -9,8 +9,12 @@
  * @brief Inline value added content to player DOM elements.
  */
 
+// Add player widgets to the status bar.
 AstroEmpiresCE.StatusBar.subscribe('bar_info', function(data, messageType, sb) {
-    alert(data);
+    data.inlinePlayer = {};
+    data.inlinePlayer.html = '<div>' + 
+    '  <div>Player</div>' +
+    '</div>';
 });
 
 jQuery('document').ready(function ($) {

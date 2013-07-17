@@ -42,13 +42,15 @@
       "matches": ["http://*.astroempires.com/*"],
       "js": [
         "libraries/external/jquery/jquery-1.8.3.min.js",
+        "libraries/ae-js-lib/design-patterns/observer-design-pattern.js",
         "libraries/ae-js-lib/astro-empires.js",
+        "content/status-bar/status-bar.js",
         "content/watcher.js",
-        "content/status-bar.js",
         "content/inline-player.js"
       ],
       "css": [
-        "css/content.css"
+        "css/content.css",
+        "content/status-bar/status-bar.css"
       ]
     }
   ]

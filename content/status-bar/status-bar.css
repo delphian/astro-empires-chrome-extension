@@ -1,0 +1,22 @@
+/* Bottom status bar. */
+div.aece-content-bar {
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    width: 20em;
+    border-right: 1px solid #333333;
+    opacity: 0.6;
+    background-color: #000000;
+}
+div.aece-content-body {
+    overflow: auto;
+    position: fixed;
+    bottom: 0;
+    top: 0;
+    right: 0;
+    left: 20em;
+}
+div#background-container {
+    width: auto;
+}

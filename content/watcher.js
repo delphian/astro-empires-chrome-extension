@@ -9,7 +9,10 @@
  * @brief Forward any viewed astro empire pages to the background page.
  */
 
+var sb = null;
+
 jQuery('document').ready(function ($) {
+    sb = AstroEmpiresCE.NewStatusBar(null, 'body');
     // Forward current page html to background process for parsing.
     var msg = {
         type: 'process_html',

@@ -9,6 +9,10 @@
  * @brief Inline value added content to player DOM elements.
  */
 
+AstroEmpiresCE.StatusBar.subscribe('bar_info', function(data, messageType, sb) {
+    alert(data);
+});
+
 jQuery('document').ready(function ($) {
     // Map solar system page.
     $('div.map-system_ctr div.description a').each(function() {

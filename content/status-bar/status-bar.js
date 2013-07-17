@@ -28,7 +28,7 @@ AstroEmpiresCE.StatusBar = function(oldBody, ae) {
     // Collect any widgets from listeners that should be inserted into the bar
     var info = {};
     var html = '';
-    this.publish(info, 'bar_info', this);
+    AstroEmpiresCE.StatusBar.publish(info, 'bar_info', this);
     for (index in info) {
         html = html + info[index].html;
     }
@@ -36,7 +36,7 @@ AstroEmpiresCE.StatusBar = function(oldBody, ae) {
     var random = Math.floor((Math.random()*1000)+1);
     var newBar = '<div class="aece-content-bar aece-content-bar-' + random + '">' + html + '</div>';
     // One last chance for listeners to alter the final version of the bar.
-    this.publish(newBar, 'bar_alter', this);
+    AstroEmpiresCE.StatusBar.publish(newBar, 'bar_alter', this);
     var newBody = '<div class="aece-content-body aece-content-body-' + random + '" />';
     try {
         // Move everything that exists into the aece-content-body.
@@ -57,7 +57,17 @@ AstroEmpiresCE.StatusBar = function(oldBody, ae) {
     return this;
 }
 /**
- * Make the status bar observable.
+ * Make the status bar static methods and constructor observable.
+ *
+ * Declare a new singleton of Observable. Declare static methods that simply
+ * forward to the AstroEmpiresCE.StatusBar singleton observable object.
+ */
+AstroEmpiresCE.StatusBar.ODP = new Observable();
+AstroEmpiresCE.StatusBar.subscribe = function(messageType, callback) { AstroEmpiresCE.StatusBar.ODP.subscribe(messageType, callback); };
+AstroEmpiresCE.StatusBar.unsubscribe = function(messageType, callback) { AstroEmpiresCE.StatusBar.ODP.subscribe(messageType, callback); };
+AstroEmpiresCE.StatusBar.publish = function(data, messageType, observed) { AstroEmpiresCE.StatusBar.ODP.subscribe(data, messageType, observed); };
+/**
+ * Make the status bar instance observable.
  */
 AstroEmpiresCE.StatusBar.prototype = new Observable();
 /**

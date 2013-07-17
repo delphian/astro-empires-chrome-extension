@@ -9,13 +9,6 @@
  * @brief Forward any viewed astro empire pages to the background page.
  */
 
-// Install status bar at bottom of screen.
-var bodyCopy = $('body').html();
-$('body').html('');
-$('body').prepend('<div class="aece-content-bar"></div>');
-$('body').prepend('<div class="aece-content-body"></div>');
-$('div.aece-content-body').html(bodyCopy);
-
 jQuery('document').ready(function ($) {
     // Forward current page html to background process for parsing.
     var msg = {

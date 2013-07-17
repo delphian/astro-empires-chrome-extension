@@ -37,3 +37,6 @@ div.aece-content-body {
     right: 0;
     left: 20em;
 }
+div#background-container {
+    width: auto;
+}

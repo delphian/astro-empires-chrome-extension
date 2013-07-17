@@ -38,11 +38,13 @@
 
   "content_scripts": [
     {
+      "run_at": "document_start",
       "matches": ["http://*.astroempires.com/*"],
       "js": [
         "libraries/external/jquery/jquery-1.8.3.min.js",
         "libraries/ae-js-lib/astro-empires.js",
         "content/watcher.js",
+        "content/status-bar.js",
         "content/inline-player.js"
       ],
       "css": [

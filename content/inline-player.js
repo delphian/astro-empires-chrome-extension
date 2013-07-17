@@ -15,7 +15,7 @@ jQuery('document').ready(function ($) {
         var selector = this;
         var id = AstroEmpires.regex(/player=([0-9]+)$/, $(this).attr('href'), 1, null);
         var msg = {
-            type: 'get_player',
+            type: 'get_config',
             id: id,
         };
         chrome.extension.sendRequest(msg, function(player) {

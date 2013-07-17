@@ -12,7 +12,7 @@
 var sb = null;
 
 jQuery('document').ready(function ($) {
-    sb = AstroEmpiresCE.NewStatusBar(null, 'body');
+    sb = new AstroEmpiresCE.StatusBar('body');
     // Forward current page html to background process for parsing.
     var msg = {
         type: 'process_html',

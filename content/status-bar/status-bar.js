@@ -13,30 +13,30 @@
 var AstroEmpiresCE = {};
 /**
  * @class AstroEmpiresCE.StatusBar
- */
-AstroEmpiresCE.StatusBar = function(ae, elementBar, elementBody) {
-    // A copy of the background's ae object.
-    this.ae = ae;
-    // Reference the status bar dom element.
-    this.tag = {
-        bar: elementBar,
-        body: elementBody,
-    };
-}
-/**
- * Create a new status bar.
  *
  * Creates a new status bar element at the same level as supplied dom element.
  * Supplied dom element will be wrapped into a body div.
  *
  * @param string oldBody
  *   String to be used as a jQuery selector.
+ * @param object ae
+ *   (optional) ae background extension object that this bar is attatched to.
  *
  * @todo Fix random to be something more stable as an identifier.
  */
-AstroEmpiresCE.NewStatusBar = function(ae, oldBody) {
+AstroEmpiresCE.StatusBar = function(oldBody, ae) {
+    // Collect any widgets from listeners that should be inserted into the bar
+    var info = {};
+    var html = '';
+    this.publish(info, 'bar_info', this);
+    for (index in info) {
+        html = html + info[index].html;
+    }
+    // Generate unique bar class name.
     var random = Math.floor((Math.random()*1000)+1);
-    var newBar = '<div class="aece-content-bar aece-content-bar-' + random + '"></div>';
+    var newBar = '<div class="aece-content-bar aece-content-bar-' + random + '">' + html + '</div>';
+    // One last chance for listeners to alter the final version of the bar.
+    this.publish(newBar, 'bar_alter', this);
     var newBody = '<div class="aece-content-body aece-content-body-' + random + '" />';
     try {
         // Move everything that exists into the aece-content-body.
@@ -46,10 +46,20 @@ AstroEmpiresCE.NewStatusBar = function(ae, oldBody) {
     }
     $(oldBody).prepend(newBar);
 
-    var statusBar = new AstroEmpiresCE.StatusBar(ae, newBar, newBody);
+    // A copy of the background's ae object.
+    this.ae = ae;
+    // Reference the status bar dom element.
+    this.tag = {
+        bar: newBar,
+        body: newBody,
+    };
 
-    return statusBar;
+    return this;
 }
+/**
+ * Make the status bar observable.
+ */
+AstroEmpiresCE.StatusBar.prototype = new Observable();
 /**
  * Update local variables based on data from the background extension.
  *
